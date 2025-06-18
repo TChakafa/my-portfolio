@@ -4,701 +4,930 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>Tynos Chakafa | Data Scientist Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* Custom CSS for the Personal Portfolio */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-    
-        /* Sidebar Styles */
-        nav {
-            background-color: #2c3e50;
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            overflow-y: auto;
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
         }
-    
-        nav .profile {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    
-        nav .profile img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-    
-        nav .divider {
-            border-top: 1px solid #fff;
-            margin: 15px 0;
-        }
-    
-        nav .nav-link {
-            font-size: 1rem;
-            padding: 10px;
-            transition: background-color 0.3s ease;
-            text-transform: lowercase;
-            font-variant: small-caps;
+
+        .navbar-brand {
+            font-weight: 600;
             display: flex;
             align-items: center;
         }
-    
-        nav .nav-link:hover {
-            background-color: #34495e;
-            border-radius: 5px;
-        }
-    
-        nav .nav-link i {
+
+        .navbar-brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             margin-right: 10px;
         }
-    
-        /* Main Content Styles */
-        .content {
-            margin-left: 270px;
-            padding: 20px;
+
+        .nav-link {
+            color: var(--light-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
         }
-    
-        /* Section Border Styles */
-        section {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: white;
+
+        .nav-link:hover {
+            color: var(--primary-color);
         }
-    
-        /* Home Section */
+
+        .nav-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Hero Section */
         #home {
-            background: linear-gradient(to bottom right, #2980b9, #6dd5fa);
-            color: black;
-            text-shadow: none;
-        }
-    
-        #home h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            text-transform: lowercase;
-        }
-    
-        #home h1 span {
-            text-transform: capitalize;
-        }
-    
-        #home p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            color: black;
-        }
-    
-        #home .btn {
-            font-size: 1rem;
-            padding: 10px 20px;
-        }
-    
-        /* Section Styles */
-        section h2 {
-            font-size: 2.5rem;
-            margin: 0; /* Remove margin for better alignment */
-            padding: 10px; /* Add padding for better spacing */
-            background-color: #d0e7ff; /* Pale blue background */
-            border: 1px solid #8ec5df; /* Green border */
-            border-radius: 5px; /* Slightly rounded corners */
-            color: #8db6f3; /* Green color for text */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-    
-        section p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-    
-        .bg-light {
-            background-color: #f9f9f9 !important;
-        }
-    
-        /* Resume Section Styles */
-        .resume-section {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #e8e0f3;
-            padding: 20px;
-        }
-    
-        /* Card Styles */
-        .card {
-            background-color: #929cf8;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
-            border-radius: 8px;
-        }
-    
-        /* Card Header Styles */
-        .card-header {
-            background-color: #b4d3f0; /* Pale blue background */
-            border: 1px solid #dbe6ee; /* Green border */
-            border-radius: 5px; /* Slightly rounded corners */
-            color: hwb(216 33% 12%); /* Green color for text */
-            padding: 10px; /* Add padding for better spacing */
-            font-size: 1.5rem; /* Adjust font size as needed */
-        }
-    
-        /* Footer Styles */
-        footer {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, var(--primary-color), #6dd5fa);
             color: white;
-            font-size: 0.9rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-    
-        footer p {
-            margin: 0;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-weight: 700;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        /* Skills Section */
+        .skill-badge {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin: 0.25rem;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.2);
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Progress Bars */
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background-color: var(--primary-color);
         }
     </style>
 </head>
 
-<body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <nav class="text-white p-3">
-            <div class="profile">
-                <img src="assets/profile.jpg" alt="Profile Picture">
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="assets/profile.jpg" alt="Tynos Chakafa">
+                <span>Tynos Chakafa</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <div class="divider"></div>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#home"><i class="fas fa-home"></i>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#resume"><i class="fas fa-file-alt"></i>Resume</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#skills"><i class="fas fa-cogs"></i>Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#contact"><i class="fas fa-envelope"></i>Contact</a>
-                </li>
-            </ul>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Main Content -->
-        <div class="content">
-            <!-- Home Section -->
-            <section id="home" class="vh-100 d-flex justify-content-center align-items-center text-center">
-                <div>
-                    <h1><span>Hello,</span> <span>I'm</span> <span>Tynos</span> <span>Chakafa</span></h1>
-                    <p class="mt-3">I am a data scientist and informatics enthusiast with passion for analyzing data and building impactful solutions. Welcome to my portfolio, where you can explore my journey, skills, and projects. I specialize in extracting insights from data using statistical methods and machine learning techniques through programming.</p>
-                    <a href="#projects" class="btn btn-light mt-3">View My Projects</a>
-                </div>
-            </section>
-
-            <!-- Resume Section -->
-            <section id="resume" class="py-5 bg-light">
-                <div class="container resume-section">
-                    <h2 class="text-center mb-4">Resume and Certifications</h2>
-                    <div class="row">
-                        <!-- Resume Card -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Resume Overview</h3>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        This section highlights my professional journey, including my education, experiences and skills acquired over the years. You can find detailed descriptions of my roles, achievements and contributions in various projects.
-                                    </p>
-                                    <div class="text-center mb-4">
-                                        <a href="Docs/my_cv.pdf" class="btn btn-primary" download>Download CV</a>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Hero Section -->
+    <section id="home" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1>Hello, I'm <span class="text-accent">Tynos Chakafa</span></h1>
+                        <p>I am a data scientist and informatics enthusiast with passion for analyzing data and building impactful solutions. This is my portfolio, where you can explore my journey, skills and projects.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#projects" class="btn btn-primary">View My Projects</a>
+                            <a href="#contact" class="btn btn-outline-light">Contact Me</a>
                         </div>
-
-                        <!-- Certification Card 1 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Data Science Certification</h3>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Introduction to Data Science</li>
-                                        <li>Data Analysis with Python</li>
-                                        <li>Machine Learning Basics</li>
-                                        <li>Data Visualization Techniques</li>
-                                    </ul>
-                                    <p>
-                                        <a href="https://www.credly.com/badges/8a92733b-1fad-4025-b619-5451f79eced4" target="_blank">View Certificate Online</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification Card 2 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Data Analysis Essentials</h3>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Fundamentals of Data Analysis</li>
-                                        <li>Data collection, cleaning and modeling</li>
-                                        <li>Data modeling for predictive, descriptive and prescriptive analytics</li>
-                                        <li>Data mining techniques</li>
-                                    </ul>
-                                    <p>
-                                        <a href="https://www.credly.com/badges/036846d9-d496-4430-aea2-6a7a74853a12/public_url" target="_blank">View Certificate Online</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification Card 3 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Python Programming Certificate</h3>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Essentials of python programming</li>
-                                        <li>Python for AI and Machine Learning</li>
-                                        <li>Object and Class Programming</li>
-                                        <li>Python Project Development</li>
-                                    </ul>
-                                    <p>
-                                        <a href="https://www.credly.com/badges/38e3fdcf-af5a-448b-9cc6-31b5293f942a/public_url" target="_blank">View Certificate Online</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        
                     </div>
                 </div>
-            </section>
+                <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+                    <img src="assets/data-science.png" alt="Data Science Illustration" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Experience Section -->
-            <section id="experience" class="py-5">
-                <div class="container">
-                    <h2 class="text-center mb-4">Experience</h2>
-                    <div class="row">
-                        <!-- Job Experience Card 1 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <a href="https://www.batashoes.com" target="_blank" class="me-3">
-                                        <img src="assets/bata.jpg" alt="Bata Shoe Company Logo" style="width: 50px; height: 50px;">
+    <!-- Resume Section -->
+    <section id="resume" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Resume & Certifications</h2>
+            <div class="row g-4">
+                <!-- Resume Card -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Resume Overview</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>This section highlights my professional journey, including my education, experiences and skills acquired over the years. You can find detailed descriptions of my roles, achievements and contributions in various projects.</p>
+                            <div class="text-center mt-4">
+                                <a href="Docs/Tynos Chakafa CV.pdf" class="btn btn-primary" download>Download CV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Data Science Certification</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Introduction to Data Science</li>
+                                <li class="list-group-item">Data Analysis with Python</li>
+                                <li class="list-group-item">Machine Learning Basics</li>
+                                <li class="list-group-item">Data Visualization Techniques</li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="https://www.credly.com/badges/8a92733b-1fad-4025-b619-5451f79eced4" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Data Analysis Essentials</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Fundamentals of Data Analysis</li>
+                                <li class="list-group-item">Data collection, cleaning and modeling</li>
+                                <li class="list-group-item">Data modeling for predictive analytics</li>
+                                <li class="list-group-item">Data mining techniques</li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="https://www.credly.com/badges/036846d9-d496-4430-aea2-6a7a74853a12/public_url" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="mb-0">Python Programming Certificate</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Essentials of python programming</li>
+                                <li class="list-group-item">Python for AI and Machine Learning</li>
+                                <li class="list-group-item">Object and Class Programming</li>
+                                <li class="list-group-item">Python Project Development</li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="https://www.credly.com/badges/38e3fdcf-af5a-448b-9cc6-31b5293f942a/public_url" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Professional Experience</h2>
+            <div class="row g-4">
+                <!-- Experience 1 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/bata.jpg" alt="Bata Shoe Company Logo" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <div>
+                                <h4 class="mb-0">Audit Data Analyst Intern</h4>
+                                <p class="mb-0 text-muted">Bata Shoe Company of Zimbabwe | May 2024 - Feb 2025</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Assisted in auditing processes by analyzing data to ensure compliance and accuracy.</p>
+                            <ul>
+                                <li>Data collection and validation</li>
+                                <li>Preparing reports for management review</li>
+                                <li>Identifying discrepancies and suggesting improvements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/san.jpg" alt="Sanyat Baptist Hospital Logo" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <div>
+                                <h4 class="mb-0">Research Data Analyst</h4>
+                                <p class="mb-0 text-muted">Sanyati Baptist Hospital | Jan 2024 - April 2024</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Conducted data analysis for research projects, focusing on healthcare outcomes.</p>
+                            <ul>
+                                <li>Collecting and analyzing patient data</li>
+                                <li>Collaborating with healthcare professionals</li>
+                                <li>Presenting findings to stakeholders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/gen.jpg" alt="Generation Health Logo" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <div>
+                                <h4 class="mb-0">Data Capturer</h4>
+                                <p class="mb-0 text-muted">Generation Health | Freelancer</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Captured and managed data for health-related projects, ensuring accuracy and completeness.</p>
+                            <ul>
+                                <li>Inputting patient data into databases</li>
+                                <li>Ensuring data integrity and confidentiality</li>
+                                <li>Assisting in generating reports for analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0">Freelancer Project Development</h4>
+                            <p class="mb-0 text-muted">Self-Employed | Jan 2023 - Present</p>
+                        </div>
+                        <div class="card-body">
+                            <p>Engaged in various freelance projects focusing on data analysis and software development.</p>
+                            <ul>
+                                <li>Developing custom data solutions for clients</li>
+                                <li>Creating visualizations and dashboards</li>
+                                <li>Website development</li>
+                                <li>Collaborating with clients to understand needs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Featured Projects</h2>
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/infla.png" alt="Inflation Icon" style="width: 40px; height: 40px;" class="me-2">
+                            <h4 class="mb-0">Inflation Prediction System</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Developed a predictive model to forecast inflation rates using historical economic data.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapse1">Learn More</button>
+                            <div class="collapse mt-2" id="collapse1">
+                                <div class="card card-body">
+                                    The system utilizes regression techniques and provides insights into economic trends.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/stock.png" alt="Stock Manipulation Icon" style="width: 40px; height: 40px;" class="me-2">
+                            <h4 class="mb-0">Stock Manipulation Detection</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Created a machine learning model to detect potential stock manipulation activities.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapse2">Learn More</button>
+                            <div class="collapse mt-2" id="collapse2">
+                                <div class="card card-body">
+                                    The project involved feature engineering and classification algorithms to identify suspicious trading patterns.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/ds.png" alt="Genome Icon" style="width: 40px; height: 40px;" class="me-2">
+                            <h4 class="mb-0">Genome-Based Patient Risk</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Developed a classification system to assess patient risk based on genomic data.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapse3">Learn More</button>
+                            <div class="collapse mt-2" id="collapse3">
+                                <div class="card card-body">
+                                    The model uses machine learning techniques to predict health outcomes and personalize treatment plans.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="assets/ds.png" alt="Disease Icon" style="width: 40px; height: 40px;" class="me-2">
+                            <h4 class="mb-0">Disease Classification Model</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Created a model to classify diseases based on patient symptoms and medical history.</p>
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#collapse4">Learn More</button>
+                            <div class="collapse mt-2" id="collapse4">
+                                <div class="card card-body">
+                                    The machine learning approach helps in early diagnosis and effective treatment recommendations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Links -->
+            <div class="text-center mt-5" data-aos="fade-up">
+                <h4 class="mb-3">Explore More Projects</h4>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="https://github.com/TChakafa" target="_blank" class="btn btn-dark">
+                        <i class="fab fa-github me-2"></i>GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-linkedin me-2"></i>LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Technical Skills</h2>
+            <div class="row">
+                <!-- Technical Skills -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Programming & Data Science</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <h6>Python <span class="float-end">90%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>SQL <span class="float-end">85%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Machine Learning <span class="float-end">80%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Data Visualization <span class="float-end">85%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Skills -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Web & Cloud Technologies</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <h6>HTML/CSS <span class="float-end">75%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>JavaScript <span class="float-end">70%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Cloud Computing <span class="float-end">65%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Database Management <span class="float-end">80%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Badges -->
+                <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Additional Skills</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap">
+                                <span class="skill-badge">Pandas</span>
+                                <span class="skill-badge">NumPy</span>
+                                <span class="skill-badge">Scikit-learn</span>
+                                <span class="skill-badge">TensorFlow</span>
+                                <span class="skill-badge">Matplotlib</span>
+                                <span class="skill-badge">Seaborn</span>
+                                <span class="skill-badge">Excel</span>
+                                <span class="skill-badge">Power BI</span>
+                                <span class="skill-badge">Git</span>
+                                <span class="skill-badge">Docker</span>
+                                <span class="skill-badge">AWS</span>
+                                <span class="skill-badge">GCP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Education</h2>
+            <div class="row g-4">
+                <!-- Education 1 -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0">Bachelor's Degree in Data Science and Informatics</h4>
+                            <p class="mb-0 text-muted">Mindlands State University, Gweru | Zimbabwe</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Studied fundamental concepts of data science</li>
+                                <li>Programming and data analysis</li>
+                                <li>Engaged in projects involving machine learning</li>
+                                <li>Focus on data visualization techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education 2 -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0">CISCO Networking Academy</h4>
+                            <p class="mb-0 text-muted">Certificates in Data Science, Data Analysis, Cybersecurity, and Python</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Data Science Techniques</li>
+                                <li>Data Analysis Methodologies</li>
+                                <li>Cybersecurity Fundamentals</li>
+                                <li>Essentials of Python Programming</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education 3 -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0">IBM SkillsBuild Student Ambassador Program</h4>
+                            <p class="mb-0 text-muted">Completed Courses in AI and Machine Learning</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Insights into artificial intelligence</li>
+                                <li>Machine learning concepts</li>
+                                <li>Practical applications in data science</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education 4 -->
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0">Advanced Level Education</h4>
+                            <p class="mb-0 text-muted">Rujeko Somala High School, Zhombe | Kwekwe</p>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Pure Mathematics</li>
+                                <li>Business Studies</li>
+                                <li>Geography</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-3 col-6 mb-4">
+                                    <a href="https://github.com/TChakafa" target="_blank" class="contact-link text-decoration-none">
+                                        <i class="fab fa-github contact-icon"></i>
+                                        <p>GitHub</p>
                                     </a>
-                                    <div>
-                                        <h4>Audit Data Analyst Intern</h4>
-                                        <h5>Bata Shoe Company of Zimbabwe | May 2024 - Feb 2025</h5>
-                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>
-                                        Assisted in auditing processes by analyzing data to ensure compliance and accuracy. Key responsibilities included:
-                                    </p>
-                                    <ul>
-                                        <li>Data collection and validation.</li>
-                                        <li>Preparing reports for management review.</li>
-                                        <li>Identifying discrepancies and suggesting improvements.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Job Experience Card 2 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <a href="https://www.sanyatbaptisthospital.com" target="_blank" class="me-3">
-                                        <img src="assets/san.jpg" alt="Sanyat Baptist Hospital Logo" style="width: 50px; height: 50px;">
+                                <div class="col-md-3 col-6 mb-4">
+                                    <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank" class="contact-link text-decoration-none">
+                                        <i class="fab fa-linkedin contact-icon"></i>
+                                        <p>LinkedIn</p>
                                     </a>
-                                    <div>
-                                        <h4>Research Data Analyst</h4>
-                                        <h5>Sanyati Baptist Hospital | Jan 2024 - April 2024</h5>
-                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>
-                                        Conducted data analysis for research projects, focusing on healthcare outcomes. Responsibilities included:
-                                    </p>
-                                    <ul>
-                                        <li>Collecting and analyzing patient data.</li>
-                                        <li>Collaborating with healthcare professionals on research initiatives.</li>
-                                        <li>Presenting findings to stakeholders through reports and presentations.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Job Experience Card 3 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <a href="https://www.generationhealth.com" target="_blank" class="me-3">
-                                        <img src="assets/gen.jpg" alt="Generation Health Logo" style="width: 50px; height: 50px;">
+                                <div class="col-md-3 col-6 mb-4">
+                                    <a href="mailto:tynoschakafa20@gmail.com" class="contact-link text-decoration-none">
+                                        <i class="fas fa-envelope contact-icon"></i>
+                                        <p>Email</p>
                                     </a>
-                                    <div>
-                                        <h4>Data Capturer</h4>
-                                        <h5>Generation Health | Freelancer</h5>
-                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>
-                                        Captured and managed data for health-related projects, ensuring accuracy and completeness. Key contributions included:
-                                    </p>
-                                    <ul>
-                                        <li>Inputting patient data into databases.</li>
-                                        <li>Ensuring data integrity and confidentiality.</li>
-                                        <li>Assisting in generating reports for analysis.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Job Experience Card 4 - Freelancer Project Development -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <div>
-                                        <h4>Freelancer Project Development</h4>
-                                        <h5>Self-Employed | Jan 2023 - Present</h5>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        Engaged in various freelance projects focusing on data analysis and software development. Key responsibilities included:
-                                    </p>
-                                    <ul>
-                                        <li>Developing custom data solutions for clients.</li>
-                                        <li>Creating visualizations and dashboards to present data insights.</li>
-                                        <li>Website development.</li>
-                                        <li>Collaborating with clients to understand their needs and deliver tailored solutions.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-             
-             <section id="projects" class="py-5 bg-light">
-                <div class="container">
-                    <h2 class="text-center mb-4">Projects</h2>
-                    <div class="row">
-                        <!-- Project Card 1 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <img src="assets/infla.png" alt="Inflation Icon" style="width: 50px; height: 50px;" class="me-2">
-                                    <h3>Inflation Prediction System</h3>
-                                </div>
-                                <div class="card-body">
-                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapse1">Description</button>
-                                    <div class="collapse" id="collapse1">
-                                        <div class="card card-body mt-2">
-                                            Developed a predictive model to forecast inflation rates using historical economic data. <br>
-                                            The system utilizes regression techniques and provides insights into economic trends.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Project Card 2 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <img src="assets/stock.png" alt="Stock Manipulation Icon" style="width: 50px; height: 50px;" class="me-2">
-                                    <h3>Stock Manipulation Detection</h3>
-                                </div>
-                                <div class="card-body">
-                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapse2">Description</button>
-                                    <div class="collapse" id="collapse2">
-                                        <div class="card card-body mt-2">
-                                            Created a machine learning model to detect potential stock manipulation activities. <br>
-                                            The project involved feature engineering and classification algorithms to identify suspicious trading patterns.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Project Card 3 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <img src="assets/ds.png" alt="Genome-Based Patient Risk Icon" style="width: 50px; height: 50px;" class="me-2">
-                                    <h3>Genome-Based Patient Risk Classification</h3>
-                                </div>
-                                <div class="card-body">
-                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapse3">Description</button>
-                                    <div class="collapse" id="collapse3">
-                                        <div class="card card-body mt-2">
-                                            Developed a classification system to assess patient risk based on genomic data. <br>
-                                            The model uses machine learning techniques to predict health outcomes and personalize treatment plans.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Project Card 4 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <div class="card-header d-flex align-items-center">
-                                    <img src="assets/ds.png" alt="Disease Classification Icon" style="width: 50px; height: 50px;" class="me-2">
-                                    <h3>Disease Classification Model</h3>
-                                </div>
-                                <div class="card-body">
-                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapse4">Description</button>
-                                    <div class="collapse" id="collapse4">
-                                        <div class="card card-body mt-2">
-                                            Created a model to classify diseases based on patient symptoms and medical history. <br>
-                                            The machine learning approach helps in early diagnosis and effective treatment recommendations.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <!-- GitHub and LinkedIn Links -->
-                    <div class="text-center mt-4">
-                        <h4>Check out the projects</h4>
-                        <a href="https://github.com/TChakafa " target="_blank" rel="noopener noreferrer">
-                            <img src="assets/github.jpg" alt="GitHub" style="width: 40px; height: 40px;" class="me-2">
-                        </a>
-                        <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295 " target="_blank" rel="noopener noreferrer">
-                            <img src="assets/linkedin.jpg" alt="LinkedIn" style="width: 40px; height: 40px;">
-                        </a>
-                    </div>
-                </div>
-            </section>
-            </section>
-
-
-            <!-- Skills Section -->
-            <section id="skills" class="py-5 bg-white">
-                <div class="container">
-                    <h2 class="text-center mb-4">Skills</h2>
-                    <div class="row">
-                        <!-- Skill Card 1 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>Python</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Proficient in Python for data analysis, machine learning, and web development.</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Skill Card 2 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>SQL</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Experienced in SQL for database management and data manipulation.</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Skill Card 3 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>Machine Learning</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Skilled in building and deploying machine learning models using various frameworks.</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Skill Card 4 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>Data Visualization</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Expert in creating insightful visualizations using tools like Matplotlib and Seaborn.</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Skill Card 5 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>Web Development</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Experience in building responsive web applications using HTML, CSS, and JavaScript.</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Skill Card 6 -->
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center">
-                                <div class="card-header">
-                                    <h4>Cloud Computing</h4>
-                                </div>
-                                <div class="card-body">
-                                    <p>Knowledgeable in cloud services like AWS and Azure for deploying applications.</p>
+                                <div class="col-md-3 col-6 mb-4">
+                                    <a href="https://wa.me/+263771537650" target="_blank" class="contact-link text-decoration-none">
+                                        <i class="fab fa-whatsapp contact-icon"></i>
+                                        <p>WhatsApp</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Education Section -->
-            <section id="education" class="py-5 bg-light">
-                <div class="container">
-                    <h2 class="text-center mb-4">Education</h2>
-                    <div class="row">
-                        <!-- Education Card 1 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Bachelor's Degree in Data Science and Informatics</h4>
-                                    <p class="text-muted">Mindlands State University, Gweru|Zimbabwe</p>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Studied fundamental concepts of data science</li>
-                                        <li>Programming and data analysis</li>
-                                        <li>Engaged in projects involving machine learning</li>
-                                        <li>Focus on data visualization techniques</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Education Card 2 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>CISCO Networking Academy</h4>
-                                    <p class="text-muted">Certificates in Data Science, Data Analysis, Cybersecurity, and Essentials of Python Programming</p>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Data Science Techniques</li>
-                                        <li>Data Analysis Methodologies</li>
-                                        <li>Cybersecurity Fundamentals</li>
-                                        <li>Essentials of Python Programming</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Education Card 3 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>IBM SkillsBuild Student Ambassador Program</h4>
-                                    <p class="text-muted">Completed Courses in AI and Machine Learning</p>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Insights into artificial intelligence</li>
-                                        <li>Machine learning concepts</li>
-                                        <li>Practical applications in data science</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- Education Card 4 -->
-                        <div class="col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Advanced Level Education</h4>
-                                    <p class="text-muted">Rujeko Somala High School, Zhombe|Kwekwe</p>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Subjects:</li>
-                                        <ul>
-                                            <li>Pure Mathematics</li>
-                                            <li>Business Studies</li>
-                                            <li>Geography</li>
-                                        </ul>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Contact Section -->
-            <section id="contact" class="py-5 bg-white">
-                <div class="container">
-                    <h2 class="text-center mb-4">Contact</h2>
-                    <div class="row">
-                        <div class="col-md-3 text-center mb-4">
-                            <a href="https://github.com/TChakafa " target="_blank" class="text-decoration-none">
-                                <img src="assets/github.jpg" alt="GitHub" style="width: 50px; height: 50px;">
-                                <p>GitHub</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center mb-4">
-                            <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295 " target="_blank" class="text-decoration-none">
-                                <img src="assets/linkedin.jpg" alt="LinkedIn" style="width: 50px; height: 50px;">
-                                <p>LinkedIn</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center mb-4">
-                            <a href="mailto:tynoschakafa20@gmail.com" class="text-decoration-none">
-                                <img src="assets/email.png" alt="Email" style="width: 50px; height: 50px;">
-                                <p>Email</p>
-                            </a>
-                        </div>
-                        <div class="col-md-3 text-center mb-4">
-                            <a href="https://wa.me/0771537650" target="_blank" class="text-decoration-none">
-                                <img src="assets/whatsapp.jpg" alt="WhatsApp" style="width: 50px; height: 50px;">
-                                <p>WhatsApp</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
     <!-- Footer -->
-    <footer class="text-center py-3">
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0">&copy; Tynos Chakafa. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-icons">
+                        <a href="https://github.com/TChakafa" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:tynoschakafa20@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/+263771537650" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.9)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'var(--secondary-color)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
