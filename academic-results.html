@@ -51,10 +51,49 @@
         .period-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
             margin: 1rem 0;
-            border-radius: 10px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: #6c757d;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+        }
+
+        .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+            color: white;
+            border: none;
+        }
+
+        .tab-content {
+            min-height: 400px;
+        }
+
+        .semester-section {
+            display: none;
+        }
+
+        .semester-section.active {
+            display: block;
         }
 
         .table {
@@ -165,10 +204,30 @@
 
             <!-- Academic Records -->
             <div class="p-4">
-                <!-- Year 1 Semester 1 -->
-                <div class="period-header">
-                    <h5 class="mb-0">April 2022 - July 2022 | Academic Year: 1 Semester: 1 | Decision: PENDING</h5>
-                </div>
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-tabs" id="semesterTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="year1-tab" data-bs-toggle="tab" data-bs-target="#year1" type="button" role="tab">Year 1</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year2-tab" data-bs-toggle="tab" data-bs-target="#year2" type="button" role="tab">Year 2</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year3-tab" data-bs-toggle="tab" data-bs-target="#year3" type="button" role="tab">Year 3</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year4-tab" data-bs-toggle="tab" data-bs-target="#year4" type="button" role="tab">Year 4</button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="semesterTabContent">
+                <!-- Year 1 Content -->
+                <div class="tab-pane fade show active" id="year1" role="tabpanel">
+                    <!-- Year 1 Semester 1 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 | April 2022 - July 2022</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -226,10 +285,10 @@
                     </table>
                 </div>
 
-                <!-- Year 1 Semester 2 -->
-                <div class="period-header">
-                    <h5 class="mb-0">August 2022 - December 2022 | Academic Year: 1 Semester: 2 | Decision: PROCEED</h5>
-                </div>
+                    <!-- Year 1 Semester 2 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2022 - December 2022</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -286,11 +345,14 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- Year 2 Semester 1 (First Quarter) -->
-                <div class="period-header">
-                    <h5 class="mb-0">March 2023 - June 2023 (First Quarter) | Academic Year: 2 Semester: 1</h5>
                 </div>
+
+                <!-- Year 2 Content -->
+                <div class="tab-pane fade" id="year2" role="tabpanel">
+                    <!-- Year 2 Semester 1 (First Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q1) | March 2023 - June 2023</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -330,10 +392,10 @@
                     </table>
                 </div>
 
-                <!-- Year 2 Semester 1 (Second Quarter) -->
-                <div class="period-header">
-                    <h5 class="mb-0">March 2023 - June 2023 (Second Quarter) | Academic Year: 2 Semester: 1 | Decision: PENDING</h5>
-                </div>
+                    <!-- Year 2 Semester 1 (Second Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q2) | March 2023 - June 2023</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -367,10 +429,10 @@
                     </table>
                 </div>
 
-                <!-- Year 2 Semester 2 (Third Quarter) -->
-                <div class="period-header">
-                    <h5 class="mb-0">September 2023 - December 2023 (Third Quarter) | Academic Year: 2 Semester: 2</h5>
-                </div>
+                    <!-- Year 2 Semester 2 (Third Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 (Q3) | September 2023 - December 2023</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -398,10 +460,10 @@
                     </table>
                 </div>
 
-                <!-- Year 2 Semester 2 (Fourth Quarter) -->
-                <div class="period-header">
-                    <h5 class="mb-0">September 2023 - December 2023 (Fourth Quarter) | Academic Year: 2 Semester: 2 | Decision: PROCEED</h5>
-                </div>
+                    <!-- Year 2 Semester 2 (Fourth Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 (Q4) | September 2023 - December 2023</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -434,11 +496,14 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- Year 3 Work Related Learning -->
-                <div class="period-header">
-                    <h5 class="mb-0">February 2024 - June 2024 (Second Quarter) | Academic Year: 3 Semester: 1 | Decision: PENDING</h5>
                 </div>
+
+                <!-- Year 3 Content -->
+                <div class="tab-pane fade" id="year3" role="tabpanel">
+                    <!-- Year 3 Work Related Learning -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 | February 2024 - June 2024</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -460,9 +525,9 @@
                     </table>
                 </div>
 
-                <div class="period-header">
-                    <h5 class="mb-0">August 2024 - November 2024 (4th Quarter) | Academic Year: 3 Semester: 2 | Decision: PROCEED</h5>
-                </div>
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2024 - November 2024</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -489,11 +554,14 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- Year 4 Current -->
-                <div class="period-header">
-                    <h5 class="mb-0">February 2025 - June 2025 (First Quarter) | Academic Year: 4 Semester: 1</h5>
                 </div>
+
+                <!-- Year 4 Content -->
+                <div class="tab-pane fade" id="year4" role="tabpanel">
+                    <!-- Year 4 Current -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q1) | February 2025 - June 2025</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -521,9 +589,9 @@
                     </table>
                 </div>
 
-                <div class="period-header">
-                    <h5 class="mb-0">February 2025 - June 2025 (Second Quarter) | Academic Year: 4 Semester: 1 | Decision: PENDING</h5>
-                </div>
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q2) | February 2025 - June 2025</h6>
+                    </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -553,8 +621,48 @@
                                 <td>2.1</td>
                                 <td><span class="status-badge status-pass">P</span></td>
                             </tr>
+
                         </tbody>
                     </table>
+                </div>
+
+                    <!-- Year 4 Semester 2 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2025 - December 2025</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DSI436</td>
+                                <td>DATA ANALYTICS AND VISUALISATION USING MATPLOTLIB AND SEABORN</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                            <tr>
+                                <td>DSI437</td>
+                                <td>MACHINE LEARNING II: USING JAVA</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                            <tr>
+                                <td>DSI438</td>
+                                <td>DATA SCIENCE AND INFORMATICS PROJECT 2</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
