@@ -1124,24 +1124,21 @@
                     url: window.location.href
                 };
                 
+                // Send to cloud database
                 try {
-                    await fetch('https://httpbin.org/post', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(visit)
+                    await fetch('https://api.jsonbin.io/v3/b/676b9a2aad19ca34f8c8f3b2', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2a$10$Vx8fK9qY.rZ3mN5wL2pXeH4tG6yR8sA1bC3dE7fG9hI2jK4lM6nO'
+                        },
+                        body: JSON.stringify({
+                            visits: [visit],
+                            append: true
+                        })
                     });
-                    
-                    // Store in shared cloud storage
-                    const visits = JSON.parse(localStorage.getItem('all_visits') || '[]');
-                    visits.push(visit);
-                    if (visits.length > 1000) visits.splice(0, visits.length - 1000);
-                    localStorage.setItem('all_visits', JSON.stringify(visits));
                 } catch (e) {
-                    // Fallback to localStorage
-                    let visits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                    visits.push(visit);
-                    if (visits.length > 100) visits = visits.slice(-100);
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(visits));
+                    console.log('Tracking failed');
                 }
             }
             
@@ -1150,60 +1147,63 @@
                 console.log('Device marked as owner');
             };
             
-            window.showVisitorData = function(password) {
+            window.showVisitorData = async function(password) {
                 if (password !== 'tynos2024') {
                     console.log('Access denied');
                     return;
                 }
                 
-                const visits = JSON.parse(localStorage.getItem('all_visits') || '[]');
-                const uniqueVisitors = [...new Set(visits.map(v => v.id))];
-                const ownerVisits = visits.filter(v => v.isOwner);
-                const otherVisits = visits.filter(v => !v.isOwner);
-                const today = new Date().toDateString();
-                
-                console.log('=== PORTFOLIO VISITOR ANALYTICS ===');
-                console.log('📊 SUMMARY:');
-                console.log('Total visits:', visits.length);
-                console.log('Unique visitors:', uniqueVisitors.length);
-                console.log('Your visits:', ownerVisits.length);
-                console.log('Other visits:', otherVisits.length);
-                console.log('Today visits:', visits.filter(v => new Date(v.timestamp).toDateString() === today).length);
-                
-                console.log('\n👥 UNIQUE VISITORS:');
-                uniqueVisitors.forEach(id => {
-                    const visitorVisits = visits.filter(v => v.id === id);
-                    const latest = visitorVisits[visitorVisits.length - 1];
-                    console.log(`${id}: ${visitorVisits.length} visits, ${latest.device} ${latest.browser}, Last: ${latest.date}`);
-                });
-                
-                console.log('\n🔍 RECENT VISITS:');
-                console.table(visits.slice(-15).map(v => ({
-                    Date: v.date,
-                    Time: v.time,
-                    Visitor: v.id,
-                    Owner: v.isOwner ? '✅' : '❌',
-                    Device: v.device,
-                    Browser: v.browser,
-                    Referrer: v.referrer
-                })));
-                
-                return {
-                    total: visits.length,
-                    unique: uniqueVisitors.length,
-                    owner: ownerVisits.length,
-                    others: otherVisits.length,
-                    allVisits: visits,
-                    export: () => {
-                        const blob = new Blob([JSON.stringify(visits, null, 2)], {type: 'application/json'});
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `portfolio-visits-${new Date().toISOString().split('T')[0]}.json`;
-                        a.click();
-                        URL.revokeObjectURL(url);
-                    }
-                };
+                try {
+                    const response = await fetch('https://api.jsonbin.io/v3/b/676b9a2aad19ca34f8c8f3b2/latest', {
+                        headers: {
+                            'X-Master-Key': '$2a$10$Vx8fK9qY.rZ3mN5wL2pXeH4tG6yR8sA1bC3dE7fG9hI2jK4lM6nO'
+                        }
+                    });
+                    const data = await response.json();
+                    const visits = data.record?.visits || [];
+                    
+                    const uniqueVisitors = [...new Set(visits.map(v => v.id))];
+                    const ownerVisits = visits.filter(v => v.isOwner);
+                    const otherVisits = visits.filter(v => !v.isOwner);
+                    const today = new Date().toDateString();
+                    
+                    console.log('=== PORTFOLIO VISITOR ANALYTICS ===');
+                    console.log('📊 SUMMARY:');
+                    console.log('Total visits:', visits.length);
+                    console.log('Unique visitors:', uniqueVisitors.length);
+                    console.log('Your visits:', ownerVisits.length);
+                    console.log('Other visits:', otherVisits.length);
+                    console.log('Today visits:', visits.filter(v => new Date(v.timestamp).toDateString() === today).length);
+                    
+                    console.log('\n👥 UNIQUE VISITORS:');
+                    uniqueVisitors.forEach(id => {
+                        const visitorVisits = visits.filter(v => v.id === id);
+                        const latest = visitorVisits[visitorVisits.length - 1];
+                        console.log(`${id}: ${visitorVisits.length} visits, ${latest.device} ${latest.browser}, Last: ${latest.date}`);
+                    });
+                    
+                    console.log('\n🔍 RECENT VISITS:');
+                    console.table(visits.slice(-15).map(v => ({
+                        Date: v.date,
+                        Time: v.time,
+                        Visitor: v.id,
+                        Owner: v.isOwner ? '✅' : '❌',
+                        Device: v.device,
+                        Browser: v.browser,
+                        Referrer: v.referrer
+                    })));
+                    
+                    return {
+                        total: visits.length,
+                        unique: uniqueVisitors.length,
+                        owner: ownerVisits.length,
+                        others: otherVisits.length,
+                        allVisits: visits
+                    };
+                } catch (e) {
+                    console.log('Failed to fetch visitor data');
+                    return { error: 'Could not retrieve data' };
+                }
             };
             
             trackVisit();
