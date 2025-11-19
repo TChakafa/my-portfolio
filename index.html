@@ -1106,7 +1106,7 @@
                        localStorage.getItem('portfolio_owner') === 'true';
             }
             
-            function trackVisit() {
+            async function trackVisit() {
                 const fingerprint = getDeviceFingerprint();
                 const visit = {
                     id: fingerprint,
@@ -1121,14 +1121,26 @@
                     screen: screen.width + 'x' + screen.height,
                     language: navigator.language,
                     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                    ip: 'Hidden' // Client-side can't get real IP
+                    url: window.location.href
                 };
                 
-                let visits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                visits.push(visit);
-                
-                if (visits.length > 500) visits = visits.slice(-500);
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(visits));
+                try {
+                    await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            access_key: 'e8f7d6c5-b4a3-9281-7f6e-5d4c3b2a1098',
+                            subject: 'Portfolio Visit',
+                            visitor_data: JSON.stringify(visit)
+                        })
+                    });
+                } catch (e) {
+                    // Fallback to localStorage
+                    let visits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                    visits.push(visit);
+                    if (visits.length > 100) visits = visits.slice(-100);
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(visits));
+                }
             }
             
             window.markAsOwner = function() {
@@ -1142,53 +1154,26 @@
                     return;
                 }
                 
-                const visits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                const uniqueVisitors = [...new Set(visits.map(v => v.id))];
-                const ownerVisits = visits.filter(v => v.isOwner);
-                const otherVisits = visits.filter(v => !v.isOwner);
-                const today = new Date().toDateString();
-                
                 console.log('=== PORTFOLIO VISITOR ANALYTICS ===');
-                console.log('📊 SUMMARY:');
-                console.log('Total visits:', visits.length);
-                console.log('Unique visitors:', uniqueVisitors.length);
-                console.log('Your visits:', ownerVisits.length);
-                console.log('Other visits:', otherVisits.length);
-                console.log('Today visits:', visits.filter(v => new Date(v.timestamp).toDateString() === today).length);
+                console.log('📧 Check your email: tynoschakafa20@gmail.com');
+                console.log('📊 All visitor data is sent there automatically');
+                console.log('\n💡 Each visit creates an email with:');
+                console.log('- Unique visitor ID');
+                console.log('- Date & time');
+                console.log('- Device & browser info');
+                console.log('- Location data');
+                console.log('\n📱 Local data (this device only):');
                 
-                console.log('\n👥 UNIQUE VISITORS:');
-                uniqueVisitors.forEach(id => {
-                    const visitorVisits = visits.filter(v => v.id === id);
-                    const latest = visitorVisits[visitorVisits.length - 1];
-                    console.log(`${id}: ${visitorVisits.length} visits, ${latest.device} ${latest.browser}, Last: ${latest.date}`);
-                });
-                
-                console.log('\n🔍 RECENT VISITS:');
-                console.table(visits.slice(-15).map(v => ({
-                    Date: v.date,
-                    Time: v.time,
-                    Visitor: v.id,
-                    Owner: v.isOwner ? '✅' : '❌',
-                    Device: v.device,
-                    Browser: v.browser,
-                    Referrer: v.referrer
-                })));
+                const visits = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                if (visits.length > 0) {
+                    console.table(visits.slice(-5));
+                } else {
+                    console.log('No local visits stored');
+                }
                 
                 return {
-                    total: visits.length,
-                    unique: uniqueVisitors.length,
-                    owner: ownerVisits.length,
-                    others: otherVisits.length,
-                    allVisits: visits,
-                    export: () => {
-                        const blob = new Blob([JSON.stringify(visits, null, 2)], {type: 'application/json'});
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = `portfolio-visits-${new Date().toISOString().split('T')[0]}.json`;
-                        a.click();
-                        URL.revokeObjectURL(url);
-                    }
+                    message: 'Check email for complete visitor data',
+                    localVisits: visits.length
                 };
             };
             
