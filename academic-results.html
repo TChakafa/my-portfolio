@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Results - Tynos Chakafa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --success-color: #27ae60;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .results-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .student-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .period-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: #6c757d;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            margin-right: 0.5rem;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+        }
+
+        .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+            color: white;
+            border: none;
+        }
+
+        .tab-content {
+            min-height: 400px;
+        }
+
+        .semester-section {
+            display: none;
+        }
+
+        .semester-section.active {
+            display: block;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+
+        .table td {
+            vertical-align: middle;
+            border-color: #e9ecef;
+        }
+
+        .class-1 { background-color: #d4edda; }
+        .class-2-1 { background-color: #d1ecf1; }
+        .class-2-2 { background-color: #fff3cd; }
+        .class-3 { background-color: #f8d7da; }
+
+        .back-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            text-decoration: none;
+            animation: dangle 2s ease-in-out infinite;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
+            text-decoration: none;
+        }
+
+        @keyframes dangle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+        }
+
+        .status-pending { background-color: #fff3cd; color: #856404; }
+        .status-proceed { background-color: #d4edda; color: #155724; }
+        .status-pass { background-color: #d1ecf1; color: #0c5460; }
+        .status-completed { background-color: #d4edda; color: #155724; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="results-container">
+            <!-- Header -->
+            <div class="header-section">
+                <div class="d-flex justify-content-between align-items-start">
+                    <button onclick="window.location.href='index.html'" class="back-btn">
+                        <i class="bi bi-arrow-left me-1"></i>Back
+                    </button>
+                    <div class="text-center flex-grow-1">
+                        <h1><i class="bi bi-mortarboard me-3"></i>Academic Results</h1>
+                        <p class="mb-0">Bachelor of Commerce Honours Degree in Data Science and Informatics</p>
+                        <p class="mb-0 mt-2"><strong>Midlands State University, Gweru | Zimbabwe</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Information -->
+            <div class="student-info">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Registration #:</strong> R228140B</p>
+                        <p><strong>Name:</strong> TYNOS CHAKAFA</p>
+                        <p><strong>Programme Code:</strong> BS08</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Attendance Type:</strong> Conventional</p>
+                        <p><strong>Status:</strong> <span id="degree-status" class="status-badge status-pending">Pending</span></p>
+                        <p><strong>Awards:</strong> <span id="degree-awards">-</span></p>
+                    </div>
+                </div>
+                
+                <!-- CV Download Section -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <a href="Docs/Tynos Chakafa CV.pdf" class="btn btn-primary btn-lg" download>
+                                <i class="bi bi-download me-2"></i>Download CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Records -->
+            <div class="p-4">
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-tabs" id="semesterTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="year1-tab" data-bs-toggle="tab" data-bs-target="#year1" type="button" role="tab">Year 1</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year2-tab" data-bs-toggle="tab" data-bs-target="#year2" type="button" role="tab">Year 2</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year3-tab" data-bs-toggle="tab" data-bs-target="#year3" type="button" role="tab">Year 3</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="year4-tab" data-bs-toggle="tab" data-bs-target="#year4" type="button" role="tab">Year 4</button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="semesterTabContent">
+                <!-- Year 1 Content -->
+                <div class="tab-pane fade show active" id="year1" role="tabpanel">
+                    <!-- Year 1 Semester 1 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 | April 2022 - July 2022</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>CS131</td>
+                                <td>BASIC COMMUNICATION SKILLS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI131</td>
+                                <td>INTRODUCTION TO INFORMATICS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-2">
+                                <td>DSI132</td>
+                                <td>FOUNDATIONS OF DATA SCIENCE</td>
+                                <td>2.2</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-3">
+                                <td>DSI133</td>
+                                <td>HUMAN-COMPUTER INTERACTION PRINCIPLES AND PRACTICES</td>
+                                <td>3</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI135</td>
+                                <td>COMPUTER ARCHITECTURE AND ORGANISATION</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI134</td>
+                                <td>PRINCIPLES OF PROGRAMMING LANGUAGES</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI136</td>
+                                <td>DATA STRUCTURES AND ALGORITHMS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Year 1 Semester 2 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2022 - December 2022</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI137</td>
+                                <td>COMPUTER-INFORMATION ETHICS, SOCIAL INFORMATICS, AND DATA GOVERNANCE</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI138</td>
+                                <td>MATHEMATICAL FOUNDATIONS OF DATA SCIENCE AND INFORMATICS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI139</td>
+                                <td>INTRODUCTION TO PYTHON</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI140</td>
+                                <td>INFORMATION INFRASTRUCTURE 1</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI141</td>
+                                <td>NATURAL LANGUAGE PROCESSING</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI142</td>
+                                <td>OPERATING SYSTEMS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-1">
+                                <td>DSI143</td>
+                                <td>FUNDAMENTALS OF DATA WAREHOUSE AND DATA MINING</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <!-- Year 2 Content -->
+                <div class="tab-pane fade" id="year2" role="tabpanel">
+                    <!-- Year 2 Semester 1 (First Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q1) | March 2023 - June 2023</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-3">
+                                <td>ENT131</td>
+                                <td>ENTREPRENEURSHIP 1</td>
+                                <td>3</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-1">
+                                <td>GSB211</td>
+                                <td>GENDER STUDIES FOR BUSINESS</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI232</td>
+                                <td>INFORMATION SYSTEMS ANALYSIS, DESIGN AND DEVELOPMENT METHODOLOGIES</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI234</td>
+                                <td>INFORMATION REPRESENTATION</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Year 2 Semester 1 (Second Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q2) | March 2023 - June 2023</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI231</td>
+                                <td>INTRODUCTION TO RESEARCH IN DATA SCIENCE AND INFORMATICS</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-1">
+                                <td>DSI233</td>
+                                <td>ENTERPRISE ARCHITECTURE</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI235</td>
+                                <td>MACHINE LEARNING I: USING PYTHON</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Year 2 Semester 2 (Third Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 (Q3) | September 2023 - December 2023</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-2-1">
+                                <td>DSI237</td>
+                                <td>STATISTICAL ANALYSIS</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI240</td>
+                                <td>R PROGRAMMING AND COMPUTER VISION</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Year 2 Semester 2 (Fourth Quarter) -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 (Q4) | September 2023 - December 2023</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-2-2">
+                                <td>DSI236</td>
+                                <td>INTRODUCTION TO MEDIA APPLICATION DEVELOPMENT</td>
+                                <td>2.2</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-1">
+                                <td>DSI238</td>
+                                <td>ORGANISATIONAL INFORMATICS</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI239</td>
+                                <td>DATA SCIENCE AND INFORMATICS PROJECT 1</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <!-- Year 3 Content -->
+                <div class="tab-pane fade" id="year3" role="tabpanel">
+                    <!-- Year 3 Work Related Learning -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 | February 2024 - June 2024</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI340</td>
+                                <td>WORK RELATED LEARNING PRELIMINARY REPORT</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2024 - November 2024</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI341</td>
+                                <td>WORK RELATED LEARNING CONTINUOUS ASSESSMENT</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI342</td>
+                                <td>WORK RELATED LEARNING REPORT</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <!-- Year 4 Content -->
+                <div class="tab-pane fade" id="year4" role="tabpanel">
+                    <!-- Year 4 Current -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q1) | February 2025 - June 2025</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI433</td>
+                                <td>ADVANCED DATA WAREHOUSE AND DATA MINING</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI435</td>
+                                <td>APPLIED CLOUD COMPUTING FOR DATA-INTENSIVE SCIENCES</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 1 (Q2) | February 2025 - June 2025</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="class-1">
+                                <td>DSI431</td>
+                                <td>DATA SCIENCE AND INFORMATICS PROJECT MANAGEMENT</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-1">
+                                <td>DSI432</td>
+                                <td>INFORMATION INFRASTRUCTURE 2: OOP</td>
+                                <td>1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+                            <tr class="class-2-1">
+                                <td>DSI434</td>
+                                <td>OPTIMISATION TECHNIQUES WITH NUMPY AND SCIPY</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pass">P</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Year 4 Semester 2 -->
+                    <div class="period-header">
+                        <h6 class="mb-0">Semester 2 | August 2025 - December 2025</h6>
+                    </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Module Code</th>
+                                <th>Module Name</th>
+                                <th>Class</th>
+                                <th>Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DSI436</td>
+                                <td>DATA ANALYTICS AND VISUALISATION USING MATPLOTLIB AND SEABORN</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                            <tr>
+                                <td>DSI437</td>
+                                <td>MACHINE LEARNING II: USING JAVA</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                            <tr>
+                                <td>DSI438</td>
+                                <td>DATA SCIENCE AND INFORMATICS PROJECT 2</td>
+                                <td>-</td>
+                                <td><span class="status-badge status-pending">PENDING</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Check if graduation date has passed and update status
+        function updateGraduationStatus() {
+            const graduationDate = new Date('2026-12-31');
+            const currentDate = new Date();
+            
+            const statusElement = document.getElementById('degree-status');
+            const awardsElement = document.getElementById('degree-awards');
+            
+            if (currentDate >= graduationDate) {
+                statusElement.textContent = 'Completed';
+                statusElement.className = 'status-badge status-completed';
+                awardsElement.textContent = 'First Class Honours Degree';
+            }
+        }
+        
+        // Run on page load
+        updateGraduationStatus();
+    </script>
+</body>
+</html>
