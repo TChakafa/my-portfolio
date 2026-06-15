@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tynos Chakafa | Data Scientist Portfolio</title>
+    <title>Tynos Chakafa | Data Scientist & Full-Stack Developer</title>
+    <meta name="description"
+        content="Professional portfolio of Tynos Chakafa, a Data Science and Informatics specialist building analytics, ERP, ecommerce, mobile, cloud, and AI automation systems.">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -13,18 +15,21 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --text-light: #7f8c8d;
+            --primary-color: #2563eb;
+            --secondary-color: #0f172a;
+            --accent-color: #14b8a6;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --border-color: #dbe3ef;
+            --soft-blue: #eff6ff;
         }
 
         body {
@@ -32,11 +37,13 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            background: #ffffff;
         }
 
         /* Navigation */
         .navbar {
-            background-color: var(--secondary-color) !important;
+            background-color: rgba(15, 23, 42, 0.96) !important;
+            backdrop-filter: blur(14px);
             transition: all 0.3s ease;
             z-index: 1050;
         }
@@ -65,6 +72,7 @@
             .navbar-collapse:not(.show) {
                 display: none !important;
             }
+
             .navbar-collapse.show {
                 display: block !important;
             }
@@ -98,7 +106,7 @@
         }
 
         .navbar-toggler {
-            border-color: rgba(255,255,255,.1);
+            border-color: rgba(255, 255, 255, .1);
         }
 
         .navbar-toggler-icon {
@@ -107,13 +115,17 @@
 
         /* Hero Section */
         #home {
-            background: linear-gradient(135deg, var(--primary-color), #6dd5fa);
+            background:
+                radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.32), transparent 28%),
+                radial-gradient(circle at 85% 24%, rgba(37, 99, 235, 0.24), transparent 30%),
+                linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #0f766e 100%);
             color: white;
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 5rem;
         }
 
         .hero-content {
@@ -123,15 +135,64 @@
 
         .hero-content h1 {
             font-weight: 700;
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            font-size: clamp(2.35rem, 4vw, 3.25rem);
+            margin-bottom: 1.25rem;
+            line-height: 1.12;
+            max-width: 680px;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
+            font-size: 1.05rem;
+            margin-bottom: 1.75rem;
+            max-width: 620px;
+            color: #dbeafe;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0f2fe;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-proof {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.75rem;
+            max-width: 640px;
+        }
+
+        .proof-item {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem 0.85rem;
+        }
+
+        .proof-item strong {
+            display: block;
+            font-size: 1.25rem;
+            color: #ffffff;
+        }
+
+        .proof-item span {
+            color: #bfdbfe;
+            font-size: 0.85rem;
+        }
+
+        .hero-illustration {
+            max-width: 330px;
+            width: 80%;
+            display: block;
+            margin: 0 auto;
         }
 
         .btn-primary {
@@ -177,7 +238,7 @@
         /* Card Styling */
         .card {
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -206,7 +267,7 @@
         .project-card {
             background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
             border: 1px solid #e2e8f0;
-            border-radius: 20px;
+            border-radius: 8px;
             transition: all 0.4s ease;
             margin-bottom: 2rem;
         }
@@ -220,7 +281,7 @@
         .project-icon {
             width: 60px;
             height: 60px;
-            border-radius: 16px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -255,13 +316,13 @@
         .experience-card {
             background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
             border-left: 4px solid var(--primary-color);
-            border-radius: 12px;
+            border-radius: 8px;
             margin-bottom: 1.5rem;
         }
 
         /* Skills Section */
         .skill-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #0f766e 100%);
             color: white;
             padding: 0.6rem 1.2rem;
             border-radius: 25px;
@@ -272,6 +333,43 @@
             transition: all 0.3s ease;
             border: none;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-accent {
+            color: #5eead4;
+        }
+
+        .section-eyebrow {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-chip {
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
+            display: inline-flex;
+            gap: 0.4rem;
+            align-items: center;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+
+        .link-chip:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .featured-project {
+            border-top: 4px solid var(--accent-color);
         }
 
         .skill-badge:hover {
@@ -349,33 +447,31 @@
 
         /* Responsive Adjustments */
         @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
+            #home {
+                min-height: auto;
+                padding: 7rem 0 4rem;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
             section {
                 padding: 3rem 0;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
                 margin-bottom: 2rem;
             }
+
+            .hero-proof {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
         }
 
         @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.98rem;
             }
         }
 
@@ -385,8 +481,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* Progress Bars */
@@ -410,7 +511,8 @@
                 <img src="assets/profile.jpg" alt="Tynos Chakafa">
                 <span>Tynos Chakafa</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -447,17 +549,34 @@
             <div class="row align-items-center">
                 <div class="col-lg-7" data-aos="fade-right">
                     <div class="hero-content">
+                        <!--div class="hero-kicker"><i class="bi bi-stars"></i> Data Science, Full-Stack Systems & AI Automation</div-->
                         <h1>Hello, I'm <span class="text-accent">Tynos Chakafa</span></h1>
-                        <p>I am a data scientist and informatics enthusiast with passion for analyzing data and building impactful solutions. This is my portfolio, where you can explore my journey, skills and projects.</p>
+                        <p>I build practical digital systems that connect data, business operations, ecommerce, mobile
+                            apps, cloud deployment, and AI-assisted workflows. My work spans university prototypes, ERP
+                            platforms, analytics solutions, and customer-facing applications.</p>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="#projects" class="btn btn-primary">View My Projects</a>
                             <a href="academic-results.html" class="btn btn-outline-light">View Academic Results</a>
                             <a href="#contact" class="btn btn-outline-light">Contact Me</a>
                         </div>
+                        <div class="hero-proof">
+                            <div class="proof-item">
+                                <strong>ERP + Mobile</strong>
+                                <span>Hybrid ecommerce and operations systems</span>
+                            </div>
+                            <div class="proof-item">
+                                <strong>MSU Systems</strong>
+                                <span>Risk, loss control and agribusiness prototypes</span>
+                            </div>
+                            <div class="proof-item">
+                                <strong>Cloud Ready</strong>
+                                <span>Laravel, React, Ubuntu server deployment</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
-                    <img src="assets/data-science.png" alt="Data Science Illustration" class="img-fluid">
+                    <img src="assets/data-science.png" alt="Data Science Illustration" class="img-fluid hero-illustration">
                 </div>
             </div>
         </div>
@@ -475,12 +594,14 @@
                             <h3 class="mb-0">Resume Overview</h3>
                         </div>
                         <div class="card-body">
-                            <p class="text-muted mb-3">Professional journey highlighting education, experiences and skills acquired over the years.</p>
+                            <p class="text-muted mb-3">A focused CV profile combining Data Science and Informatics with
+                                full-stack software engineering, cloud deployment, mobile development, and AI workflow
+                                automation.</p>
                             <ul class="custom-list">
-                                <li>Detailed role descriptions</li>
-                                <li>Key achievements</li>
-                                <li>Project contributions</li>
-                                <li>Skills development</li>
+                                <li>Graduate Trainee experience at Midlands State University</li>
+                                <li>Production-minded prototypes for institutional workflows</li>
+                                <li>Personal product development across ERP, ecommerce and mobile apps</li>
+                                <li>Applied skills in Laravel, React, Flutter, Electron, SQL and analytics</li>
                             </ul>
                             <div class="text-center mt-4">
                                 <a href="Docs/Tynos Chakafa CV.pdf" class="btn btn-primary" download>Download CV</a>
@@ -503,7 +624,8 @@
                                 <li>Data Visualization Techniques</li>
                             </ul>
                             <div class="mt-3">
-                                <a href="https://www.credly.com/badges/8a92733b-1fad-4025-b619-5451f79eced4" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                                <a href="https://www.credly.com/badges/8a92733b-1fad-4025-b619-5451f79eced4"
+                                    target="_blank" class="btn btn-outline-primary">View Certificate</a>
                             </div>
                         </div>
                     </div>
@@ -522,7 +644,8 @@
                                 <li>Data mining techniques</li>
                             </ul>
                             <div class="mt-3">
-                                <a href="https://www.credly.com/badges/036846d9-d496-4430-aea2-6a7a74853a12/public_url" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                                <a href="https://www.credly.com/badges/036846d9-d496-4430-aea2-6a7a74853a12/public_url"
+                                    target="_blank" class="btn btn-outline-primary">View Certificate</a>
                             </div>
                         </div>
                     </div>
@@ -541,7 +664,8 @@
                                 <li>Python Project Development</li>
                             </ul>
                             <div class="mt-3">
-                                <a href="https://www.credly.com/badges/38e3fdcf-af5a-448b-9cc6-31b5293f942a/public_url" target="_blank" class="btn btn-outline-primary">View Certificate</a>
+                                <a href="https://www.credly.com/badges/38e3fdcf-af5a-448b-9cc6-31b5293f942a/public_url"
+                                    target="_blank" class="btn btn-outline-primary">View Certificate</a>
                             </div>
                         </div>
                     </div>
@@ -555,18 +679,46 @@
         <div class="container">
             <h2 class="section-title text-center" data-aos="fade-up">Professional Experience</h2>
             <div class="row g-4">
-                <!-- Experience 1 -->
+                <!-- Experience 0 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 experience-card">
+                        <div class="card-header">
+                            <h4 class="mb-0">Graduate Trainee - Systems Development</h4>
+                            <p class="mb-0 text-light">Midlands State University | Current</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-3">Contributing to digital transformation work through system
+                                prototyping, process analysis, and practical software development.</p>
+                            <ul class="custom-list">
+                                <li>Developed the MSU Risk & Loss Control System prototype for tracking incidents, risk
+                                    records and institutional loss control workflows</li>
+                                <li>Developed the MSU Agribusiness System prototype to support agribusiness operations
+                                    and information management</li>
+                                <li>Applied Laravel, PHP, SQL, React concepts and cloud deployment thinking to build
+                                    maintainable institutional systems</li>
+                            </ul>
+                            <div class="mt-3">
+                                <a href="https://risk.int.msu.ac.zw/" target="_blank" class="link-chip"><i
+                                        class="bi bi-box-arrow-up-right"></i> MSU Risk System</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 1 -->
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center">
-                            <img src="assets/bata.jpg" alt="Bata Shoe Company Logo" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <img src="assets/bata.jpg" alt="Bata Shoe Company Logo" class="rounded-circle me-3"
+                                style="width: 50px; height: 50px;">
                             <div>
                                 <h4 class="mb-0">Audit Data Analyst Intern</h4>
                                 <p class="mb-0 text-muted">Bata Shoe Company of Zimbabwe | May 2024 - Feb 2025</p>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-muted mb-3">Assisted in auditing processes by analyzing data to ensure compliance and accuracy.</p>
+                            <p class="text-muted mb-3">Assisted in auditing processes by analyzing data to ensure
+                                compliance and accuracy.</p>
                             <ul class="custom-list">
                                 <li>Data collection and validation</li>
                                 <li>Preparing reports for management review</li>
@@ -577,17 +729,19 @@
                 </div>
 
                 <!-- Experience 2 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center">
-                            <img src="assets/san.jpg" alt="Sanyat Baptist Hospital Logo" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                            <img src="assets/san.jpg" alt="Sanyat Baptist Hospital Logo" class="rounded-circle me-3"
+                                style="width: 50px; height: 50px;">
                             <div>
                                 <h4 class="mb-0">Research Data Analyst</h4>
                                 <p class="mb-0 text-muted">Sanyati Baptist Hospital | Jan 2024 - April 2024</p>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="text-muted mb-3">Conducted data analysis for research projects, focusing on healthcare outcomes.</p>
+                            <p class="text-muted mb-3">Conducted data analysis for research projects, focusing on
+                                healthcare outcomes.</p>
                             <ul class="custom-list">
                                 <li>Collecting and analyzing patient data</li>
                                 <li>Collaborating with healthcare professionals</li>
@@ -598,19 +752,20 @@
                 </div>
 
                 <!-- Experience 3 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="card h-100 experience-card">
                         <div class="card-header">
                             <h4 class="mb-0">Freelancer Project Development</h4>
                             <p class="mb-0 text-light">Self-Employed | Jan 2023 - Present</p>
                         </div>
                         <div class="card-body">
-                            <p class="text-muted mb-3">Freelance projects in data analysis and software development.</p>
+                            <p class="text-muted mb-3">Personal and freelance software projects in analytics, ecommerce,
+                                mobile apps, dashboards, and business workflow automation.</p>
                             <div class="row g-2">
-                                <div class="col-6"><span class="badge bg-light text-dark">Custom Solutions</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark">Dashboards</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark">Web Development</span></div>
-                                <div class="col-6"><span class="badge bg-light text-dark">Client Relations</span></div>
+                                <div class="col-6"><span class="badge bg-light text-dark">Laravel Systems</span></div>
+                                <div class="col-6"><span class="badge bg-light text-dark">Flutter Apps</span></div>
+                                <div class="col-6"><span class="badge bg-light text-dark">Electron Desktop</span></div>
+                                <div class="col-6"><span class="badge bg-light text-dark">AI Automation</span></div>
                             </div>
                         </div>
                     </div>
@@ -624,17 +779,122 @@
         <div class="container">
             <h2 class="section-title text-center" data-aos="fade-up">Featured Projects</h2>
             <div class="row g-4 justify-content-center">
-                <!-- Project 1 -->
+                <!-- Flagship Project 1 -->
                 <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 project-card featured-project">
+                        <div class="card-body">
+                            <div class="section-eyebrow">Flagship Product</div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #2563eb 0%, #0f766e 100%);">
+                                    <i class="bi bi-shop-window"></i>
+                                </div>
+                                <h5 class="mb-0 fw-bold">iSoX ERP</h5>
+                            </div>
+                            <p class="text-muted mb-3">Hybrid ERP and ecommerce platform designed for businesses that
+                                sell both in-store and online, connecting customers, inventory, ordering and business
+                                operations.</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3">
+                                <span class="badge bg-primary">ERP</span>
+                                <span class="badge bg-success">Ecommerce</span>
+                                <span class="badge bg-dark">Electron</span>
+                                <span class="badge bg-info">Flutter</span>
+                            </div>
+                            <a href="https://isox.co.zw" target="_blank" class="link-chip"><i
+                                    class="bi bi-box-arrow-up-right"></i> Visit iSoX ERP</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flagship Project 2 -->
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="card h-100 project-card featured-project">
+                        <div class="card-body">
+                            <div class="section-eyebrow">Institutional System</div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <h5 class="mb-0 fw-bold">MSU Risk & Loss Control</h5>
+                            </div>
+                            <p class="text-muted mb-3">Prototype system for risk records, incident visibility, loss
+                                control workflows, reporting and institutional accountability at Midlands State
+                                University.</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3">
+                                <span class="badge bg-success">Risk Control</span>
+                                <span class="badge bg-primary">Laravel</span>
+                                <span class="badge bg-secondary">Reporting</span>
+                            </div>
+                            <a href="https://risk.int.msu.ac.zw/" target="_blank" class="link-chip"><i
+                                    class="bi bi-box-arrow-up-right"></i> Visit Risk System</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flagship Project 3 -->
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 project-card featured-project">
+                        <div class="card-body">
+                            <div class="section-eyebrow">Mobile Marketplace</div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #db2777 0%, #7c3aed 100%);">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <h5 class="mb-0 fw-bold">Rukwai App</h5>
+                            </div>
+                            <p class="text-muted mb-3">Beauty and hairdressing platform connecting customers with beauty
+                                designers and hairdressers, with social features for discovery, engagement and service
+                                growth.</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3">
+                                <span class="badge bg-danger">BeautyTech</span>
+                                <span class="badge bg-info">Mobile App</span>
+                                <span class="badge bg-dark">Social Features</span>
+                            </div>
+                            <a href="https://rukwai.co.zw" target="_blank" class="link-chip"><i
+                                    class="bi bi-box-arrow-up-right"></i> Visit Rukwai</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flagship Project 4 -->
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
+                    <div class="card h-100 project-card featured-project">
+                        <div class="card-body">
+                            <div class="section-eyebrow">University Prototype</div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #15803d 0%, #84cc16 100%);">
+                                    <i class="bi bi-tree"></i>
+                                </div>
+                                <h5 class="mb-0 fw-bold">MSU Agribusiness System</h5>
+                            </div>
+                            <p class="text-muted mb-3">Prototype agribusiness information system supporting operational
+                                records, business process visibility and structured management of agricultural
+                                activities.</p>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge bg-success">Agribusiness</span>
+                                <span class="badge bg-primary">Prototype</span>
+                                <span class="badge bg-secondary">Operations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 1 -->
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #2563eb 0%, #0f766e 100%);">
                                     <i class="bi bi-graph-up-arrow"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Inflation Prediction System</h5>
                             </div>
-                            <p class="text-muted mb-3">Developed a predictive model to forecast inflation rates using historical economic data and regression techniques.</p>
+                            <p class="text-muted mb-3">Developed a predictive model to forecast inflation rates using
+                                historical economic data and regression techniques.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-primary">Regression</span>
                                 <span class="badge bg-secondary">Economics</span>
@@ -644,16 +904,18 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="350">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #dc2626 0%, #1e3a8a 100%);">
                                     <i class="bi bi-shield-exclamation"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Stock Manipulation Detection</h5>
                             </div>
-                            <p class="text-muted mb-3">Created a machine learning model to detect potential stock manipulation activities using classification algorithms.</p>
+                            <p class="text-muted mb-3">Created a machine learning model to detect potential stock
+                                manipulation activities using classification algorithms.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-danger">Classification</span>
                                 <span class="badge bg-warning">Finance</span>
@@ -663,16 +925,18 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
                                     <i class="bi bi-dna"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Genome-Based Patient Risk</h5>
                             </div>
-                            <p class="text-muted mb-3">Developed a classification system to assess patient risk based on genomic data for personalized treatment plans.</p>
+                            <p class="text-muted mb-3">Developed a classification system to assess patient risk based on
+                                genomic data for personalized treatment plans.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-info">Healthcare</span>
                                 <span class="badge bg-success">Genomics</span>
@@ -682,16 +946,18 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="450">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);">
                                     <i class="bi bi-heart-pulse"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Disease Classification Model</h5>
                             </div>
-                            <p class="text-muted mb-3">Created a model to classify diseases based on patient symptoms and medical history for early diagnosis.</p>
+                            <p class="text-muted mb-3">Created a model to classify diseases based on patient symptoms
+                                and medical history for early diagnosis.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-success">Healthcare</span>
                                 <span class="badge bg-primary">Diagnosis</span>
@@ -705,12 +971,14 @@
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #0891b2 0%, #0f766e 100%);">
                                     <i class="bi bi-shield-heart"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">AidHome Care</h5>
                             </div>
-                            <p class="text-muted mb-3">Federated learning system for autoimmune diseases optimization, modeling individual response rates and associated diseases.</p>
+                            <p class="text-muted mb-3">Federated learning system for autoimmune diseases optimization,
+                                modeling individual response rates and associated diseases.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-info">Federated Learning</span>
                                 <span class="badge bg-success">Healthcare</span>
@@ -720,16 +988,18 @@
                 </div>
 
                 <!-- Project 6 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="550">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #1d4ed8 0%, #64748b 100%);">
                                     <i class="bi bi-translate"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Live Language Translation</h5>
                             </div>
-                            <p class="text-muted mb-3">Live video and audio language translation system for Shona and Ndebele languages with real-time processing.</p>
+                            <p class="text-muted mb-3">Live video and audio language translation system for Shona and
+                                Ndebele languages with real-time processing.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-warning">NLP</span>
                                 <span class="badge bg-secondary">Real-time</span>
@@ -739,16 +1009,18 @@
                 </div>
 
                 <!-- Project 7 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="700">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #15803d 0%, #2563eb 100%);">
                                     <i class="bi bi-bank"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Loan Eligibility Model</h5>
                             </div>
-                            <p class="text-muted mb-3">Machine learning model for automated loan approval decisions based on applicant data and creditworthiness assessment.</p>
+                            <p class="text-muted mb-3">Machine learning model for automated loan approval decisions
+                                based on applicant data and creditworthiness assessment.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-success">FinTech</span>
                                 <span class="badge bg-primary">Automation</span>
@@ -758,16 +1030,18 @@
                 </div>
 
                 <!-- Project 8 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="800">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="650">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #0369a1 0%, #14b8a6 100%);">
                                     <i class="bi bi-geo-alt"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Geospatial Risk Analysis</h5>
                             </div>
-                            <p class="text-muted mb-3">Real-time weather data analysis model for disaster risk assessment and evacuation route planning using geospatial techniques.</p>
+                            <p class="text-muted mb-3">Real-time weather data analysis model for disaster risk
+                                assessment and evacuation route planning using geospatial techniques.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-info">GIS</span>
                                 <span class="badge bg-warning">Weather</span>
@@ -777,16 +1051,18 @@
                 </div>
 
                 <!-- Project 9 -->
-                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="900">
+                <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="700">
                     <div class="card h-100 project-card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-3">
-                                <div class="project-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="project-icon"
+                                    style="background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);">
                                     <i class="bi bi-search"></i>
                                 </div>
                                 <h5 class="mb-0 fw-bold">Digital Footprint Analysis</h5>
                             </div>
-                            <p class="text-muted mb-3">Analyzed user browser behavior and local machine activities to detect possible security threats and suspicious patterns.</p>
+                            <p class="text-muted mb-3">Analyzed user browser behavior and local machine activities to
+                                detect possible security threats and suspicious patterns.</p>
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge bg-danger">Security</span>
                                 <span class="badge bg-dark">Threat Detection</span>
@@ -798,14 +1074,25 @@
 
             <!-- GitHub Links -->
             <div class="text-center mt-5" data-aos="fade-up">
-                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none;">
+                <div class="card"
+                    style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0f766e 100%); border: none;">
                     <div class="card-body py-4">
                         <h4 class="mb-3 text-white">Explore More Projects</h4>
-                        <div class="d-flex justify-content-center gap-3">
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="https://isox.co.zw" target="_blank" class="btn btn-light btn-lg">
+                                <i class="bi bi-shop-window me-2"></i>iSoX ERP
+                            </a>
+                            <a href="https://risk.int.msu.ac.zw/" target="_blank" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-shield-check me-2"></i>MSU Risk
+                            </a>
+                            <a href="https://rukwai.co.zw" target="_blank" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-phone me-2"></i>Rukwai
+                            </a>
                             <a href="https://github.com/TChakafa" target="_blank" class="btn btn-light btn-lg">
                                 <i class="fab fa-github me-2"></i>GitHub
                             </a>
-                            <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank" class="btn btn-outline-light btn-lg">
+                            <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank"
+                                class="btn btn-outline-light btn-lg">
                                 <i class="fab fa-linkedin me-2"></i>LinkedIn
                             </a>
                         </div>
@@ -831,6 +1118,18 @@
                                 <h6>Python <span class="float-end">90%</span></h6>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>PHP & Laravel <span class="float-end">85%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>React Framework <span class="float-end">75%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -893,9 +1192,15 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <h6>Cloud Computing <span class="float-end">65%</span></h6>
+                                <h6>Ubuntu Server Deployment <span class="float-end">75%</span></h6>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                    <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Cloud Computing <span class="float-end">70%</span></h6>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 70%"></div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -920,6 +1225,14 @@
                                 <span class="skill-badge">NumPy</span>
                                 <span class="skill-badge">Scikit-learn</span>
                                 <span class="skill-badge">TensorFlow</span>
+                                <span class="skill-badge">PHP</span>
+                                <span class="skill-badge">Laravel</span>
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">Ubuntu Server</span>
+                                <span class="skill-badge">Flutter</span>
+                                <span class="skill-badge">Electron</span>
+                                <span class="skill-badge">AI Workflows</span>
+                                <span class="skill-badge">Automation</span>
                                 <span class="skill-badge">Matplotlib</span>
                                 <span class="skill-badge">Seaborn</span>
                                 <span class="skill-badge">SPSS</span>
@@ -947,7 +1260,7 @@
                     <div class="card h-100">
                         <div class="card-header">
                             <h4 class="mb-0">Bachelor's Degree in Data Science and Informatics</h4>
-                            <p class="mb-0 text-muted">Mindlands State University, Gweru | Zimbabwe</p>
+                            <p class="mb-0 text-muted">Midlands State University, Gweru | Zimbabwe</p>
                         </div>
                         <div class="card-body">
                             <ul class="custom-list">
@@ -965,7 +1278,8 @@
                     <div class="card h-100">
                         <div class="card-header">
                             <h4 class="mb-0">CISCO Networking Academy</h4>
-                            <p class="mb-0 text-muted">Certificates in Data Science, Data Analysis, Cybersecurity, and Python</p>
+                            <p class="mb-0 text-muted">Certificates in Data Science, Data Analysis, Cybersecurity, and
+                                Python</p>
                         </div>
                         <div class="card-body">
                             <ul class="custom-list">
@@ -1025,13 +1339,15 @@
                         <div class="card-body">
                             <div class="row text-center">
                                 <div class="col-md-3 col-6 mb-4">
-                                    <a href="https://github.com/TChakafa" target="_blank" class="contact-link text-decoration-none">
+                                    <a href="https://github.com/TChakafa" target="_blank"
+                                        class="contact-link text-decoration-none">
                                         <i class="fab fa-github contact-icon"></i>
                                         <p>GitHub</p>
                                     </a>
                                 </div>
                                 <div class="col-md-3 col-6 mb-4">
-                                    <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank" class="contact-link text-decoration-none">
+                                    <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank"
+                                        class="contact-link text-decoration-none">
                                         <i class="fab fa-linkedin contact-icon"></i>
                                         <p>LinkedIn</p>
                                     </a>
@@ -1043,7 +1359,8 @@
                                     </a>
                                 </div>
                                 <div class="col-md-3 col-6 mb-4">
-                                    <a href="https://wa.me/+263771537650" target="_blank" class="contact-link text-decoration-none">
+                                    <a href="https://wa.me/+263771537650" target="_blank"
+                                        class="contact-link text-decoration-none">
                                         <i class="fab fa-whatsapp contact-icon"></i>
                                         <p>WhatsApp</p>
                                     </a>
@@ -1066,7 +1383,8 @@
                 <div class="col-md-6 text-center text-md-end">
                     <div class="social-icons">
                         <a href="https://github.com/TChakafa" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/tynos-chakafa-03a329295" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
                         <a href="mailto:tynoschakafa20@gmail.com"><i class="fas fa-envelope"></i></a>
                         <a href="https://wa.me/+263771537650" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -1085,16 +1403,16 @@
     <!-- Custom JS -->
     <script>
         // Visitor Tracking (Owner Only)
-        (function() {
+        (function () {
             const STORAGE_KEY = 'portfolio_visits';
-            
+
             function getDeviceFingerprint() {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
                 ctx.textBaseline = 'top';
                 ctx.font = '14px Arial';
                 ctx.fillText('Device fingerprint', 2, 2);
-                
+
                 return btoa([
                     navigator.userAgent,
                     navigator.language,
@@ -1105,13 +1423,13 @@
                     canvas.toDataURL()
                 ].join('|')).slice(0, 16);
             }
-            
+
             function isOwner() {
-                return navigator.userAgent.includes('Windows') && 
-                       window.location.hostname.includes('localhost') ||
-                       localStorage.getItem('portfolio_owner') === 'true';
+                return navigator.userAgent.includes('Windows') &&
+                    window.location.hostname.includes('localhost') ||
+                    localStorage.getItem('portfolio_owner') === 'true';
             }
-            
+
             async function trackVisit() {
                 const fingerprint = getDeviceFingerprint();
                 const visit = {
@@ -1129,7 +1447,7 @@
                     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                     url: window.location.href
                 };
-                
+
                 // Send email notification
                 try {
                     await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -1157,34 +1475,34 @@
                     localStorage.setItem('portfolio_visits', JSON.stringify(visits));
                 }
             }
-            
-            window.markAsOwner = function() {
+
+            window.markAsOwner = function () {
                 localStorage.setItem('portfolio_owner', 'true');
                 console.log('Device marked as owner');
             };
-            
-            window.showVisitorData = function(password) {
+
+            window.showVisitorData = function (password) {
                 if (password !== 'tynos2024') {
                     console.log('Access denied');
                     return;
                 }
-                
+
                 console.log('=== PORTFOLIO VISITOR ANALYTICS ===');
                 console.log('📧 Visitor emails sent to: tynoschakafa20@gmail.com');
                 console.log('📊 Each visit triggers an automatic email notification');
                 console.log('\n📱 Local data (this device only):');
-                
+
                 const visits = JSON.parse(localStorage.getItem('portfolio_visits') || '[]');
                 if (visits.length > 0) {
                     const uniqueVisitors = [...new Set(visits.map(v => v.id))];
                     const ownerVisits = visits.filter(v => v.isOwner);
                     const otherVisits = visits.filter(v => !v.isOwner);
-                    
+
                     console.log('Local visits:', visits.length);
                     console.log('Unique visitors:', uniqueVisitors.length);
                     console.log('Your visits:', ownerVisits.length);
                     console.log('Other visits:', otherVisits.length);
-                    
+
                     console.table(visits.slice(-10).map(v => ({
                         Date: v.date,
                         Time: v.time,
@@ -1196,17 +1514,17 @@
                 } else {
                     console.log('No local visits stored');
                 }
-                
+
                 return {
                     message: 'All visitor data is sent to Google Sheets',
                     localVisits: visits.length,
                     sheetsUrl: 'https://docs.google.com/spreadsheets/d/1BxH2vK8mN5wL2pXeH4tG6yR8sA1bC3dE7fG9hI2jK4lM6nO'
                 };
             };
-            
+
             trackVisit();
         })();
-        
+
         // Initialize AOS animation
         AOS.init({
             duration: 800,
@@ -1216,7 +1534,7 @@
 
         // Back to top button functionality
         const backToTopButton = document.querySelector('.back-to-top');
-        
+
         // Show/hide button based on scroll position
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -1225,7 +1543,7 @@
                 backToTopButton.classList.remove('active');
             }
         });
-        
+
         // Smooth scroll to top when clicked
         backToTopButton.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1237,7 +1555,7 @@
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
@@ -1246,7 +1564,7 @@
         });
 
         // Navbar background change on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.9)';
@@ -1282,7 +1600,7 @@
         });
 
         // Collapse navbar on outside click for mobile
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const navbar = document.querySelector('.navbar');
             const navbarCollapse = document.querySelector('#navbarNav');
             const navbarToggler = document.querySelector('.navbar-toggler');
