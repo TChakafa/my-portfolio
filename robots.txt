@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tynoschakafa.netlify.app/sitemap.xml
